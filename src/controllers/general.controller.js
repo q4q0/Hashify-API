@@ -8,7 +8,10 @@ const getMethods = async (req, res, next) => {
       methods: methods,
     });
   } catch (err) {
-    throw new Error(`something went wrong`);
+    return res.status(500).json({
+      success: false,
+      error: err,
+    });
   }
 };
 
@@ -21,7 +24,10 @@ const createMethod = async (req, res, next) => {
       methods: createMethod,
     });
   } catch (err) {
-    throw new Error(`something went wrong`);
+    return res.status(500).json({
+      success: false,
+      error: err,
+    });
   }
 };
 

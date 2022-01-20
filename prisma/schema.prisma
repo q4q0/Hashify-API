@@ -17,3 +17,11 @@ model Method {
   minKeyLength Int    @default(0)
   maxKeyLength Int    @default(0)
 }
+
+model Hash {
+  hash_id      Int    @id @default(autoincrement())
+  digest       String @unique
+  digestEncode String
+  type         String
+  key          String @default("")
+}
