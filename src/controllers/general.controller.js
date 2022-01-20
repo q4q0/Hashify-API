@@ -1,8 +1,8 @@
 const generalService = require("../services/general.service");
 
-const getMethods = (req, res, next) => {
+const getMethods = async (req, res, next) => {
   try {
-    const methods = generalService.getMethods();
+    const methods = await generalService.getMethods();
     res.status(200).json({
       success: true,
       methods: methods,
@@ -12,6 +12,20 @@ const getMethods = (req, res, next) => {
   }
 };
 
+const createMethod = async (req, res, next) => {
+  try {
+    const createMethod = await generalService.createMethod(req, res, next);
+    console.log(createMethod);
+    res.status(201).json({
+      success: true,
+      methods: createMethod,
+    });
+  } catch (err) {
+    throw new Error(`something went wrong`);
+  }
+};
+
 module.exports = {
   getMethods,
+  createMethod,
 };
