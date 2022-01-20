@@ -8,8 +8,29 @@ const getMD4Hashed = async (req, res, next) => {
   return hashedValue;
 };
 
-const getAndSaveMD4Hashed = async (req, res, next) => {};
+const getSavedMD4Hashed = async (req, res, next) => {
+  const hashedValues = await prisma.hash.findMany();
+  return hashedValues;
+};
+
+const saveMD4Hashed = async (hashed) => {
+  try {
+    const savedHashed = await prisma.hash.create({
+      data: {
+        digest: hashed,
+        digestEncode: "hex",
+        type: "MD4",
+        key: "",
+      },
+    });
+    return savedHashed;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
 
 module.exports = {
   getMD4Hashed,
+  saveMD4Hashed,
+  getSavedMD4Hashed,
 };
