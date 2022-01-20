@@ -6,3 +6,5 @@
 2. PostgreSQL
 3. Prisma ORM
 4. ReactJS
+
+## uncompleted ...
