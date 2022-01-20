@@ -24,6 +24,9 @@ app.use("/api/v1/hash/md5", md5Routes);
 const sha1Routes = require("./routes/sha1.routes");
 app.use("/api/v1/hash/sha1", sha1Routes);
 
+const sha256Rotes = require("./routes/sha256.routes");
+app.use("/api/v1/hash/sha256", sha256Rotes);
+
 // export app to server
 
 module.exports = app;
