@@ -26,10 +26,27 @@ model Method {
   EndPoint     EndPoint[]
 }
 
-model Hash {
+model Hashed {
   hash_id      Int    @id @default(autoincrement())
   digest       String @unique
   digestEncode String
   type         String
   key          String @default("")
+}
+
+model Encrypted {
+  encrepted_id    Int       @id @default(autoincrement())
+  encrypted_value String
+  type            String
+  secret_key      String
+  dcrypted_value  Dcrypted? @relation(fields: [dcrypted_id], references: [dcrypted_id])
+  dcrypted_id     Int?
+}
+
+model Dcrypted {
+  dcrypted_id    Int         @id @default(autoincrement())
+  dcrypted_value String
+  type           String
+  secret_key     String
+  Encrypted      Encrypted[]
 }
