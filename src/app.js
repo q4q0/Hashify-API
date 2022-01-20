@@ -18,6 +18,9 @@ app.use("/api/v1/general", generalRoutes);
 const md4Routes = require("./routes/md4.routes");
 app.use("/api/v1/hash", md4Routes);
 
+const md5Routes = require("./routes/md5.routes");
+app.use("/api/v1/hash", md5Routes);
+
 // export app to server
 
 module.exports = app;
