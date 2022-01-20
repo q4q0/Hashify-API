@@ -9,7 +9,11 @@ const getSH1Hashed = async (req, res, next) => {
 };
 
 const getSavedSH1Hashed = async (req, res, next) => {
-  const hashedValues = await prisma.hash.findMany();
+  const hashedValues = await prisma.hash.findMany({
+    where: {
+      type: "SHA1",
+    },
+  });
   return hashedValues;
 };
 

@@ -9,7 +9,11 @@ const getMD4Hashed = async (req, res, next) => {
 };
 
 const getSavedMD4Hashed = async (req, res, next) => {
-  const hashedValues = await prisma.hash.findMany();
+  const hashedValues = await prisma.hash.findMany({
+    where: {
+      type: "MD4",
+    },
+  });
   return hashedValues;
 };
 
