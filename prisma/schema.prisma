@@ -10,12 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model EndPoint {
+  endpoint_id     Int     @id @default(autoincrement())
+  path            String  @unique
+  method          Method? @relation(fields: [methodMethod_id], references: [method_id])
+  methodMethod_id Int?
+}
+
 model Method {
-  method_id    Int    @id @default(autoincrement())
+  method_id    Int        @id @default(autoincrement())
   name         String
-  endpoint     String @unique
-  minKeyLength Int    @default(0)
-  maxKeyLength Int    @default(0)
+  endpoint     String     @unique
+  minKeyLength Int        @default(0)
+  maxKeyLength Int        @default(0)
+  EndPoint     EndPoint[]
 }
 
 model Hash {
