@@ -1,4 +1,4 @@
-const sha1Service = require("../services/sha1.service");
+const sha1Service = require("../../services/hashing/sha1.service");
 
 const getSH1Hashed = async (req, res, next) => {
   try {

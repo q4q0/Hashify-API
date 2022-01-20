@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const sha256Controller = require("../controllers/sha256.controller");
+const sha256Controller = require("../../controllers/hashing/sha256.controller");
 
 router.get("/", sha256Controller.getSHA265Hashed);
 router.get("/save", sha256Controller.getAndSaveSHA256Hashed);

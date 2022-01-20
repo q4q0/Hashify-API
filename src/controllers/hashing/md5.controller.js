@@ -1,4 +1,4 @@
-const md5Service = require("../services/md5.service");
+const md5Service = require("../../services/hashing/md5.service");
 
 const getMD5Hashed = async (req, res, next) => {
   try {

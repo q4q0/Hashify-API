@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const md5Controller = require("../controllers/md5.controller");
+const md5Controller = require("../../controllers/hashing/md5.controller");
 
 router.get("/", md5Controller.getMD5Hashed);
 router.get("/save", md5Controller.getAndSaveMD5Hashed);

@@ -1,4 +1,4 @@
-const sha256Service = require("../services/sha256.service");
+const sha256Service = require("../../services/hashing/sha256.service");
 
 const getSHA265Hashed = async (req, res, next) => {
   try {
