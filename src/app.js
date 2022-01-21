@@ -36,6 +36,13 @@ app.use("/api/v1/aes256/", aes256Routes);
 const aes512Routes = require("./routes/encryption/aes512.routes");
 app.use("/api/v1/aes512/", aes512Routes);
 
+app.get("*", (req, res) => {
+  res.status(404).json({
+    success: false,
+    msg: "Wow, bro what are you talking about man?!",
+  });
+});
+
 // export app to server
 
 module.exports = app;
