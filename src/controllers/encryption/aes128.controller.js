@@ -8,6 +8,8 @@ const getAES128Encrypted = (req, res, next) => {
       success: true,
       encrypted_value: result,
       type: "AES128",
+      secret_key: key,
+      encoding: encoding,
     });
   } catch (err) {
     console.log(err);
@@ -24,6 +26,43 @@ const getAES128Decrypted = (req, res, next) => {
       success: true,
       decrypted_value: result,
       type: "AES128",
+      secret_key: key,
+      encoding: encoding,
+    });
+  } catch (err) {
+    console.log(err);
+    throw new Error("something went wrong");
+  }
+};
+
+const saveAES128Encrypted = (req, res, next) => {
+  try {
+    const { value, key, encoding } = req.query;
+    const encryptedRecord = aes128Service.saveAES128Encrypted(
+      value,
+      key,
+      encoding
+    );
+    res.status(201).json({
+      success: true,
+      encryptedRecord: encryptedRecord,
+    });
+  } catch (err) {
+    console.log(err);
+    throw new Error("something went wrong");
+  }
+};
+const saveAES128Decrypted = (req, res, next) => {
+  try {
+    const { value, key, encoding } = req.query;
+    const decryptedRecord = aes128Service.saveAES128Decrypted(
+      value,
+      key,
+      encoding
+    );
+    res.status(201).json({
+      success: true,
+      decryptedRecord: decryptedRecord,
     });
   } catch (err) {
     console.log(err);
@@ -34,4 +73,6 @@ const getAES128Decrypted = (req, res, next) => {
 module.exports = {
   getAES128Encrypted,
   getAES128Decrypted,
+  saveAES128Encrypted,
+  saveAES128Decrypted,
 };

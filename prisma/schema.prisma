@@ -11,10 +11,10 @@ datasource db {
 }
 
 model EndPoint {
-  endpoint_id     Int     @id @default(autoincrement())
-  path            String  @unique
-  method          Method? @relation(fields: [methodMethod_id], references: [method_id])
-  methodMethod_id Int?
+  endpoint_id Int     @id @default(autoincrement())
+  path        String  @unique
+  method      Method? @relation(fields: [method_id], references: [method_id])
+  method_id   Int?
 }
 
 model Method {
@@ -35,18 +35,17 @@ model Hashed {
 }
 
 model Encrypted {
-  encrepted_id    Int       @id @default(autoincrement())
+  encrypted_id    Int    @id @default(autoincrement())
   encrypted_value String
   type            String
   secret_key      String
-  dcrypted_value  Dcrypted? @relation(fields: [dcrypted_id], references: [dcrypted_id])
-  dcrypted_id     Int?
+  encoding        String
 }
 
-model Dcrypted {
-  dcrypted_id    Int         @id @default(autoincrement())
+model Decrypted {
+  decrypted_id   Int    @id @default(autoincrement())
   dcrypted_value String
   type           String
   secret_key     String
-  Encrypted      Encrypted[]
+  encoding       String
 }
