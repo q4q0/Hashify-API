@@ -70,9 +70,35 @@ const saveAES256Decrypted = async (req, res, next) => {
   }
 };
 
+const getAllSaved256EncryptedData = async (req, res, next) => {
+  try {
+    const result = await aes256Service.getAllSaved256EncryptedData();
+    res.status(201).json({
+      success: true,
+      all_encrypted_aes256_records: result,
+    });
+  } catch (err) {
+    throw new Error("something went wrong");
+  }
+};
+
+const getAllSaved256DecryptedData = async (req, res, next) => {
+  try {
+    const result = await aes256Service.getAllSaved256DecryptedData();
+    res.status(201).json({
+      success: true,
+      all_decrypted_aes256_records: result,
+    });
+  } catch (err) {
+    throw new Error("something went wrong");
+  }
+};
+
 module.exports = {
   getAES256Encrypted,
   getAES256Decrypted,
   saveAES256Encrypted,
   saveAES256Decrypted,
+  getAllSaved256EncryptedData,
+  getAllSaved256DecryptedData,
 };

@@ -77,9 +77,37 @@ const saveAES256Decrypted = async (value, key, encoding) => {
   }
 };
 
+const getAllSaved256EncryptedData = async () => {
+  try {
+    const data = await prisma.encrypted.findMany({
+      where: {
+        type: "AES-256",
+      },
+    });
+    return data;
+  } catch (err) {
+    throw new Error("Wow bro what are u talking about man?");
+  }
+};
+
+const getAllSaved256DecryptedData = async () => {
+  try {
+    const data = await prisma.decrypted.findMany({
+      where: {
+        type: "AES-256",
+      },
+    });
+    return data;
+  } catch (err) {
+    throw new Error("Wow bro what are u talking about man?");
+  }
+};
+
 module.exports = {
   getAES256Encrypted,
   getAES256Decrypted,
   saveAES256Encrypted,
   saveAES256Decrypted,
+  getAllSaved256EncryptedData,
+  getAllSaved256DecryptedData,
 };
