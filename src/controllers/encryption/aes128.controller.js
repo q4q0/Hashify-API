@@ -35,10 +35,10 @@ const getAES128Decrypted = (req, res, next) => {
   }
 };
 
-const saveAES128Encrypted = (req, res, next) => {
+const saveAES128Encrypted = async (req, res, next) => {
   try {
     const { value, key, encoding } = req.query;
-    const encryptedRecord = aes128Service.saveAES128Encrypted(
+    const encryptedRecord = await aes128Service.saveAES128Encrypted(
       value,
       key,
       encoding
@@ -52,10 +52,10 @@ const saveAES128Encrypted = (req, res, next) => {
     throw new Error("something went wrong");
   }
 };
-const saveAES128Decrypted = (req, res, next) => {
+const saveAES128Decrypted = async (req, res, next) => {
   try {
     const { value, key, encoding } = req.query;
-    const decryptedRecord = aes128Service.saveAES128Decrypted(
+    const decryptedRecord = await aes128Service.saveAES128Decrypted(
       value,
       key,
       encoding

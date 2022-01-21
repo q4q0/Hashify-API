@@ -42,11 +42,7 @@ const getAES128Decrypted = (value, key, encoding) => {
   }
 };
 
-// encrypted_value String
-// type            String
-// secret_key      String
-// encoding        String
-const saveAES128Encrypted = (value, key, encoding) => {
+const saveAES128Encrypted = async (value, key, encoding) => {
   try {
     const encryptedValue = getAES128Encrypted(value, key, encoding);
     const encryptedRecord = await prisma.encrypted.create({
@@ -63,12 +59,12 @@ const saveAES128Encrypted = (value, key, encoding) => {
     throw new Error("Wow bro what are u talking about man?");
   }
 };
-const saveAES128Decrypted = (value, key, encoding) => {
+const saveAES128Decrypted = async (value, key, encoding) => {
   try {
-    const decryptedValue = getAES128Encrypted(value, key, encoding);
+    const decryptedValue = getAES128Decrypted(value, key, encoding);
     const decryptedRecord = await prisma.decrypted.create({
       data: {
-        encrypted_value: decryptedValue,
+        decrypted_value: decryptedValue,
         type: "AES-128",
         secret_key: key,
         encoding: encoding,

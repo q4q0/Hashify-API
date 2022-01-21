@@ -43,9 +43,9 @@ model Encrypted {
 }
 
 model Decrypted {
-  decrypted_id   Int    @id @default(autoincrement())
-  dcrypted_value String
-  type           String
-  secret_key     String
-  encoding       String
+  decrypted_id    Int    @id @default(autoincrement())
+  decrypted_value String
+  type            String
+  secret_key      String
+  encoding        String
 }
