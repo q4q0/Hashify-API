@@ -20,7 +20,12 @@ const getAES128Encrypted = (value, key, encoding) => {
 
 const getAES128Decrypted = (value, key, encoding) => {
   try {
-    const updatedValue = Buffer.from(value, "base64");
+    console.log(value);
+    console.log(key);
+    console.log(encoding);
+    const parts = value.split(" ");
+    const sterilization = parts[0] + "+" + parts[1];
+    const updatedValue = Buffer.from(sterilization, "base64");
     const updatedKey = crypto
       .createHash("sha256")
       .update(String(key))
