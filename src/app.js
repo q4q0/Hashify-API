@@ -33,6 +33,9 @@ app.use("/api/v1/aes128/", aes128Routes);
 const aes256Routes = require("./routes/encryption/aes256.routes");
 app.use("/api/v1/aes256/", aes256Routes);
 
+const aes512Routes = require("./routes/encryption/aes512.routes");
+app.use("/api/v1/aes512/", aes512Routes);
+
 // export app to server
 
 module.exports = app;
