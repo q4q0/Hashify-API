@@ -30,6 +30,9 @@ app.use("/api/v1/hash/sha256", sha256Routes);
 const aes128Routes = require("./routes/encryption/aes128.routes");
 app.use("/api/v1/aes128/", aes128Routes);
 
+const aes256Routes = require("./routes/encryption/aes256.routes");
+app.use("/api/v1/aes256/", aes256Routes);
+
 // export app to server
 
 module.exports = app;
