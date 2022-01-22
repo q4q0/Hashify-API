@@ -13,7 +13,7 @@ const getAES128Encrypted = (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    throw new Error("something went wrong");
+    next(err);
   }
 };
 
@@ -31,7 +31,7 @@ const getAES128Decrypted = (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    throw new Error("something went wrong");
+    next(err);
   }
 };
 
@@ -49,7 +49,7 @@ const saveAES128Encrypted = async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    throw new Error("something went wrong");
+    next(err);
   }
 };
 
@@ -66,8 +66,7 @@ const saveAES128Decrypted = async (req, res, next) => {
       decryptedRecord: decryptedRecord,
     });
   } catch (err) {
-    console.log(err);
-    throw new Error("something went wrong");
+    next(err);
   }
 };
 
@@ -79,7 +78,7 @@ const getAllSaved128EncryptedData = async (req, res, next) => {
       all_encrypted_aes128_records: result,
     });
   } catch (err) {
-    throw new Error("something went wrong");
+    next(err);
   }
 };
 
@@ -91,7 +90,7 @@ const getAllSaved128DecryptedData = async (req, res, next) => {
       all_decrypted_aes128_records: result,
     });
   } catch (err) {
-    throw new Error("something went wrong");
+    next(err);
   }
 };
 

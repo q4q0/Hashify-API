@@ -3,12 +3,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-
-// setting up middlewares
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+const errorHandler = require("./middlewares/errorHandler.middleware");
 
 // setting up routes
 
@@ -42,6 +37,13 @@ app.get("*", (req, res) => {
     msg: "Wow, bro what are you talking about man?!",
   });
 });
+
+// setting up middlewares
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(errorHandler);
 
 // export app to server
 
